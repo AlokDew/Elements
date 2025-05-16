@@ -1,0 +1,109 @@
+{
+	"info": {
+		"_postman_id": "28e2c4a1-ea59-4598-9999-13e087f46efe",
+		"name": "Pathwell Failure Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Failure_400_Validation_Automation Script",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"console.log(\"Scenario Title: \"+pm.iterationData.get(\"scenarioTitle\"));\r",
+							"pm.test(\"Test Case Id: \"+pm.iterationData.get(\"TestCaseId\"), function (){ \r",
+							"\r",
+							"    console.log (\"Verifying Status Code\");\r",
+							"    pm.response.to.have.status(200);\r",
+							"    console.log (\"Status 200 Code Validated\");\r",
+							"    pm.response.to.be.ok;\r",
+							"    pm.response.to.be.withBody;\r",
+							"\r",
+							"    var jsondata = pm.response.json();\r",
+							"    console.log (\"Verifying Error Status Code\");\r",
+							"    pm.expect(jsondata.metadata.outcome.status).to.eql(400);\r",
+							"    console.log(\"Expected Result: 400\" +\" Was found: \"+ jsondata.metadata.outcome.status);\r",
+							"    console.log (\"Status 400 Error Code Validated Successfully\");\r",
+							"\r",
+							"    console.log (\"Verifying Validation Message\");\r",
+							"    pm.expect(jsondata.metadata.outcome.message).to.eql(\"Request failed validation.\");\r",
+							"    console.log(\"Expected Result: Request failed validation.\" +\" Was found: \"+ jsondata.metadata.outcome.message);\r",
+							"    console.log (\"Validation Message Validated Successfully\");\r",
+							"\r",
+							"    console.log (\"Verifying code\");\r",
+							"    pm.expect(jsondata.metadata.outcome.code).to.eql(101001);\r",
+							"    console.log(\"Expected Result: 101001\" +\" Was found: \"+ jsondata.metadata.outcome.code);\r",
+							"    console.log (\"Code 101001 Validated Successfully\");\r",
+							"\r",
+							"    console.log (\"Verifying code\");\r",
+							"    pm.expect(jsondata.metadata.outcome.additionalDetails[0].code).to.eql(900002);\r",
+							"    console.log(\"Expected Result: 900002\" +\" Was found: \"+ jsondata.metadata.outcome.additionalDetails[0].code);\r",
+							"    console.log (\"Code 900002 Validated Successfully\");\r",
+							"\r",
+							"    console.log (\"Verifying Additional Message\");\r",
+							"    pm.expect(jsondata.metadata.outcome.additionalDetails[0].message).to.contains(pm.iterationData.get(\"additionalDetails\"));\r",
+							"    console.log(\"Expected Result: \"+pm.iterationData.get(\"additionalDetails\")+\" Was found: \"+ jsondata.metadata.outcome.additionalDetails[0].message);\r",
+							"    console.log (\"Additional Message Validated Successfully\");\r",
+							"\r",
+							"    console.log (\"Verifying severity\");\r",
+							"    pm.expect(jsondata.metadata.outcome.additionalDetails[0].severity).to.eql(\"ERROR\");\r",
+							"    console.log(\"Expected Result: ERROR \"+\" Was found: \"+ jsondata.metadata.outcome.additionalDetails[0].severity);\r",
+							"    console.log (\"Severity Validated Successfully\");\r",
+							"    \r",
+							"    \r",
+							"    \r",
+							"    \r",
+							"    //pm.expect(jsondata.metadata.outcome.additionalDetails[0].severity).to.eql(\"ERROR\"));\r",
+							"    \r",
+							"    });\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": " application/json ",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Encoding",
+						"value": " gzip,deflate",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"clientName\": \"{{clientName}}\",\r\n    \"customerAmi\": \"{{memberID}}\",\r\n    \"mbrFirstName\": \"{{memberFirstName}}\",\r\n    \"mbrLastName\": \"{{memberLastName}}\",\r\n    \"mbrDob\": \"{{memberDOB}}\",\r\n    \"hcpcCode\": \"{{hcpcCode}}\",\r\n    \"programIndicator\": \"{{ProgramIndicator}}\",\r\n    \"residenceStateCode\": \"{{resStateCode}}\",\r\n    \"zipCode\": \"{{membResidenceZip}}\",\r\n    \"providerNPI\": \"{{siteNPI}}\",\r\n    \"providerTIN\": \"{{siteTIN}}\",\r\n    \"startServiceDate\": \"{{serviceDate}}\",\r\n    \"accountId\": \"{{clientAccountID}}\",\r\n    \"lobCode\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://itxain2.innovate.lan/CIGNAPHM_SCO",
+					"protocol": "https",
+					"host": [
+						"itxain2",
+						"innovate",
+						"lan"
+					],
+					"path": [
+						"CIGNAPHM_SCO"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

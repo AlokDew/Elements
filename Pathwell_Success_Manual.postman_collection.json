@@ -1,0 +1,818 @@
+{
+	"info": {
+		"_postman_id": "4e910b43-48ea-45a8-b695-0ed917c830a2",
+		"name": "Pathwell_Success_Manual",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Member Level Check",
+			"item": [
+				{
+					"name": "Primary_Validate_Y",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"console.log(\"Scenario Title: Primary_Validate_Y \");\r",
+									"\r",
+									"pm.test(\" Primary_Validate_Y \", function () {\r",
+									"    console.log(\"Verifying Status Code\");\r",
+									"    pm.response.to.have.status(200);\r",
+									"    console.log(\"Status code is Validated\");\r",
+									"    \r",
+									"    var jsonData = pm.response.json();\r",
+									"\r",
+									"    console.log(\"Verifying candidacyCheckCode\");\r",
+									"    console.log(\"Expected Result: Y\"+\" Was found: \"+jsonData.payload.candidacyCheckCode);\r",
+									"    pm.expect(jsonData.payload.candidacyCheckCode).to.eql(\"Y\");\r",
+									"    console.log(\"Test Completed....!\")\r",
+									"    \r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": " application/json ",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": " gzip,deflate",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"serviceReferenceId\": \"\",\r\n   \"clientName\":\"Evicore\",\r\n    \"customerAmi\": \"10089929001\",\r\n    \"hcpcCode\": \"J9035\",\r\n    \"programIndicator\": \"pathwell\",\r\n    \"residenceStateCode\": \"VA\",\r\n    \"providerNPI\": \"1013029180\",\r\n    \"providerTIN\": \"202178916\",\r\n    \"startServiceDate\": \"2022-10-12\",   \r\n    \"accountId\": \"622116\",\r\n    \"mbrFirstName\": \"RIOLNZEE\",\r\n    \"mbrLastName\": \"PEICHDSENAUN\",\r\n    \"mbrDob\": \"1973-01-04\",\r\n    \"lobCode\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://itxain2.innovate.lan/CIGNAPHM_SCO",
+							"protocol": "https",
+							"host": [
+								"itxain2",
+								"innovate",
+								"lan"
+							],
+							"path": [
+								"CIGNAPHM_SCO"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Unknown_Validate_Y",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": " application/json ",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": " gzip,deflate",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"serviceReferenceId\": \"\",\r\n   \"clientName\":\"Evicore\",\r\n    \"customerAmi\": \"{{UnknownMembID}}\",\r\n    \"hcpcCode\": \"J9035\",\r\n    \"programIndicator\": \"pathwell\",\r\n    \"residenceStateCode\": \"CT\",\r\n    \"providerNPI\": \"1013024710\",\r\n    \"providerTIN\": \"202005044\",\r\n    \"startServiceDate\": \"2022-10-12\",  \r\n    \"zipCode\": \"6010\", \r\n    \"accountId\": \"622116\",\r\n    \"mbrFirstName\": \"{{UnknownFirstName}}\",\r\n    \"mbrLastName\": \"{{UnknownLastName}}\",\r\n    \"mbrDob\": \"{{UnknownMembDOB}}\",\r\n    \"lobCode\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://itxain2.innovate.lan/CIGNAPHM_SCO",
+							"protocol": "https",
+							"host": [
+								"itxain2",
+								"innovate",
+								"lan"
+							],
+							"path": [
+								"CIGNAPHM_SCO"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Secondary_Validate_N_62",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"console.log(\"Scenario Title: Secondary_Validate_N_62 \");\r",
+									"\r",
+									"pm.test(\" Secondary_Validate_N_62 \", function () {\r",
+									"    console.log(\"Verifying Status Code\");\r",
+									"    pm.response.to.have.status(200);\r",
+									"    console.log(\"Status code is Validated\");\r",
+									"    \r",
+									"    var jsonData = pm.response.json();\r",
+									"\r",
+									"    console.log(\"Verifying candidacyCheckCode\");\r",
+									"    console.log(\"Expected Result: N\"+\" Was found: \"+jsonData.payload.candidacyCheckCode);\r",
+									"    pm.expect(jsonData.payload.candidacyCheckCode).to.eql(\"N\");\r",
+									"\r",
+									"    pm.expect(parseInt(jsonData.payload.candidacyCheckReasonCode)).to.eql(62);\r",
+									"    pm.expect(jsonData.payload.candidacyCheckReasonDescription).to.eql(\"Member insurance - Non Primary/not unknown\");\r",
+									"\r",
+									"    console.log(\"Test Completed....!\")\r",
+									"    \r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": " application/json ",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": " gzip,deflate",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"serviceReferenceId\": \"\",\r\n   \"clientName\":\"Evicore\",\r\n    \"customerAmi\": \"10089922901\",\r\n    \"hcpcCode\": \"J9035\",\r\n    \"programIndicator\": \"pathwell\",\r\n    \"residenceStateCode\": \"CT\",\r\n    \"providerNPI\": \"1013024710\",\r\n    \"providerTIN\": \"202005044\",\r\n    \"startServiceDate\": \"2022-10-12\",  \r\n    \"zipCode\": \"6010\", \r\n    \"accountId\": \"622116\",\r\n    \"mbrFirstName\": \"GERMATIOOWIN\",\r\n    \"mbrLastName\": \"YOSLOGIE\",\r\n    \"mbrDob\": \"1974-05-14\",\r\n    \"lobCode\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://itxain2.innovate.lan/CIGNAPHM_SCO",
+							"protocol": "https",
+							"host": [
+								"itxain2",
+								"innovate",
+								"lan"
+							],
+							"path": [
+								"CIGNAPHM_SCO"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Drug Level Check",
+			"item": [
+				{
+					"name": "NonPathwell_Drug_N_50",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": " application/json ",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": " gzip,deflate",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"serviceReferenceId\": \"\",\r\n   \"clientName\":\"Evicore\",\r\n    \"customerAmi\": \"10089929001\",\r\n    \"hcpcCode\": \"K9228\",\r\n    \"programIndicator\": \"pathwell\",\r\n    \"residenceStateCode\": \"VA\",\r\n    \"providerNPI\": \"1013029180\",\r\n    \"providerTIN\": \"202178916\",\r\n    \"startServiceDate\": \"2022-10-12\",   \r\n    \"accountId\": \"622116\",\r\n    \"mbrFirstName\": \"RIOLNZEE\",\r\n    \"mbrLastName\": \"PEICHDSENAUN\",\r\n    \"mbrDob\": \"1973-01-04\",\r\n    \"lobCode\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://itxain2.innovate.lan/CIGNAPHM_SCO",
+							"protocol": "https",
+							"host": [
+								"itxain2",
+								"innovate",
+								"lan"
+							],
+							"path": [
+								"CIGNAPHM_SCO"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Facility+ HCPC Exclusion",
+			"item": [
+				{
+					"name": "FacilityHCPC_Exclusion_N_30",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": " application/json ",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": " gzip,deflate",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"serviceReferenceId\": \"\",\r\n   \"clientName\":\"Evicore\",\r\n    \"customerAmi\": \"10089929001\",\r\n    \"hcpcCode\": \"{{FacilityHCPC_Drug}}\",\r\n    \"programIndicator\": \"pathwell\",\r\n    \"residenceStateCode\": \"VA\",\r\n    \"providerNPI\": \"\",\r\n    \"providerTIN\": \"{{FacilityHCPC_Site}}\",\r\n    \"startServiceDate\": \"2022-10-12\",   \r\n    \"accountId\": \"622116\",\r\n    \"mbrFirstName\": \"RIOLNZEE\",\r\n    \"mbrLastName\": \"PEICHDSENAUN\",\r\n    \"mbrDob\": \"1973-01-04\",\r\n    \"lobCode\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://itxain2.innovate.lan/CIGNAPHM_SCO",
+							"protocol": "https",
+							"host": [
+								"itxain2",
+								"innovate",
+								"lan"
+							],
+							"path": [
+								"CIGNAPHM_SCO"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UnclassifiedHCPC_Exception_N_40",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": " application/json ",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": " gzip,deflate",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"serviceReferenceId\": \"\",\r\n   \"clientName\":\"Evicore\",\r\n    \"customerAmi\": \"10089929001\",\r\n    \"hcpcCode\": \"C9399\",\r\n    \"programIndicator\": \"pathwell\",\r\n    \"residenceStateCode\": \"VA\",\r\n    \"providerNPI\": \"1013029180\",\r\n    \"providerTIN\": \"202178916\",\r\n    \"startServiceDate\": \"2022-10-12\",  \r\n    \"zipCode\": \"20103\", \r\n    \"accountId\": \"622116\",\r\n    \"mbrFirstName\": \"RIOLNZEE\",\r\n    \"mbrLastName\": \"PEICHDSENAUN\",\r\n    \"mbrDob\": \"1973-01-04\",\r\n    \"lobCode\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://itxain2.innovate.lan/CIGNAPHM_SCO",
+							"protocol": "https",
+							"host": [
+								"itxain2",
+								"innovate",
+								"lan"
+							],
+							"path": [
+								"CIGNAPHM_SCO"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "OON Benefits",
+			"item": [
+				{
+					"name": "Primary_OONBenefit_Validate_O",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": " application/json ",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": " gzip,deflate",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"serviceReferenceId\": \"\",\r\n   \"clientName\":\"Evicore\",\r\n    \"customerAmi\": \"{{Primary_OON}}\",\r\n    \"hcpcCode\": \"J9035\",\r\n    \"programIndicator\": \"pathwell\",\r\n    \"residenceStateCode\": \"VA\",\r\n    \"providerNPI\": \"1013029180\",\r\n    \"providerTIN\": \"202178916\",\r\n    \"startServiceDate\": \"2022-10-12\",   \r\n    \"accountId\": \"622116\",\r\n    \"mbrFirstName\": \"RIOLNZEE\",\r\n    \"mbrLastName\": \"PEICHDSENAUN\",\r\n    \"mbrDob\": \"1973-01-04\",\r\n    \"lobCode\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://itxain2.innovate.lan/CIGNAPHM_SCO",
+							"protocol": "https",
+							"host": [
+								"itxain2",
+								"innovate",
+								"lan"
+							],
+							"path": [
+								"CIGNAPHM_SCO"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Unknown_OON_Validate_O",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": " application/json ",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": " gzip,deflate",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"serviceReferenceId\": \"\",\r\n   \"clientName\":\"Evicore\",\r\n    \"customerAmi\": \"{{UnknownMembID}}\",\r\n    \"hcpcCode\": \"J9035\",\r\n    \"programIndicator\": \"pathwell\",\r\n    \"residenceStateCode\": \"CT\",\r\n    \"providerNPI\": \"1013024710\",\r\n    \"providerTIN\": \"202005044\",\r\n    \"startServiceDate\": \"2022-10-12\",  \r\n    \"zipCode\": \"6010\", \r\n    \"accountId\": \"622116\",\r\n    \"mbrFirstName\": \"{{UnknownFirstName}}\",\r\n    \"mbrLastName\": \"{{UnknownLastName}}\",\r\n    \"mbrDob\": \"{{UnknownMembDOB}}\",\r\n    \"lobCode\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://itxain2.innovate.lan/CIGNAPHM_SCO",
+							"protocol": "https",
+							"host": [
+								"itxain2",
+								"innovate",
+								"lan"
+							],
+							"path": [
+								"CIGNAPHM_SCO"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Negative",
+			"item": [
+				{
+					"name": "Primary_NonPWDrug_Validate_N_50",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": " application/json ",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": " gzip,deflate",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"serviceReferenceId\": \"\",\r\n   \"clientName\":\"Evicore\",\r\n    \"customerAmi\": \"10089929001\",\r\n    \"hcpcCode\": \"C9084\",\r\n    \"programIndicator\": \"pathwell\",\r\n    \"residenceStateCode\": \"VA\",\r\n    \"providerNPI\": \"1013029180\",\r\n    \"providerTIN\": \"202178916\",\r\n    \"startServiceDate\": \"2022-10-12\",   \r\n    \"accountId\": \"622116\",\r\n    \"mbrFirstName\": \"RIOLNZEE\",\r\n    \"mbrLastName\": \"PEICHDSENAUN\",\r\n    \"mbrDob\": \"1973-01-04\",\r\n    \"lobCode\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://itxain2.innovate.lan/CIGNAPHM_SCO",
+							"protocol": "https",
+							"host": [
+								"itxain2",
+								"innovate",
+								"lan"
+							],
+							"path": [
+								"CIGNAPHM_SCO"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Secondary_WithOON_Validate_N_62",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": " application/json ",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": " gzip,deflate",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"serviceReferenceId\": \"\",\r\n   \"clientName\":\"Evicore\",\r\n    \"customerAmi\": \"10089922901\",\r\n    \"hcpcCode\": \"C9084\",\r\n    \"programIndicator\": \"pathwell\",\r\n    \"residenceStateCode\": \"CT\",\r\n    \"providerNPI\": \"1013024710\",\r\n    \"providerTIN\": \"202005044\",\r\n    \"startServiceDate\": \"2022-10-12\",  \r\n    \"zipCode\": \"6010\", \r\n    \"accountId\": \"622116\",\r\n    \"mbrFirstName\": \"GERMATIOOWIN\",\r\n    \"mbrLastName\": \"YOSLOGIE\",\r\n    \"mbrDob\": \"1974-05-14\",\r\n    \"lobCode\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://itxain2.innovate.lan/CIGNAPHM_SCO",
+							"protocol": "https",
+							"host": [
+								"itxain2",
+								"innovate",
+								"lan"
+							],
+							"path": [
+								"CIGNAPHM_SCO"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Other",
+			"item": [
+				{
+					"name": "Request failed validation",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": " application/json ",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": " gzip,deflate",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"serviceReferenceId\": \"\",\r\n    \"clientName\":\"Evicore\",\r\n    \"customerAmi\": \"10089929001\",\r\n    \"hcpcCode \": \"J7192\",\r\n    \"programIndicator\": \"pathwell\",\r\n    \"residenceStateCode\": \"TX\",\r\n    \"providerNPI\": \"1023189610\",\r\n    \"providerTIN\": \"590872594\",\r\n    \"startServiceDate\": \"2022-07-29\",\r\n    \"zipCode\": \"6010\",\r\n    \"accountId\": \"622116\",\r\n    \"mbrFirstName\": \"PEICHDSENAUN\",\r\n    \"mbrLastName\": \"TRISTAN PBSX\",\r\n    \"mbrDob\": \"1977-03-24\",\r\n    \"lobCode\": \"GWFC\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://itxain2.innovate.lan/CIGNAPHM_SCO",
+							"protocol": "https",
+							"host": [
+								"itxain2",
+								"innovate",
+								"lan"
+							],
+							"path": [
+								"CIGNAPHM_SCO"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Failure Request",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": " application/json ",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": " gzip,deflate",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"serviceReferenceId\": \"\",\r\n\"customerAmi\": \"U9305832401\",\r\n\"clientName\":\"Evicore\",\r\n\"hcpcCode\": \"J311\",\r\n\"programIndicator\": \"pathwell\",\r\n\"residenceStateCode\": \"TX\",\r\n\"providerNPI\": \"690872594\",\r\n\"providerTIN\": \"590872594\",\r\n\"startServiceDate\": \"2021-07-29\",\r\n\"zipCode\": \"06085\",\r\n\"accountId\": \"23456\",\r\n\"mbrFirstName\": \"John\",\r\n\"mbrLastName\": \"Mike\",\r\n\"mbrDob\": \"1980-01-30\",\r\n\"lobCode\": \"CED\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://itxain2.innovate.lan/CIGNAPHM_SCO",
+							"protocol": "https",
+							"host": [
+								"itxain2",
+								"innovate",
+								"lan"
+							],
+							"path": [
+								"CIGNAPHM_SCO"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ZipcodeNull",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": " application/json ",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": " gzip,deflate",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"clientName\":\"Evicore\",\r\n    \"customerAmi\": \"10089928701\",\r\n    \"hcpcCode\": \"J9055\",\r\n    \"programIndicator\": \"pathwell\",\r\n    \"residenceStateCode\": \"NM\",\r\n    \"providerNPI\": \"1013024710\",\r\n    \"providerTIN\": \"202005044\",\r\n    \"startServiceDate\": \"2022-07-01\", \r\n    \"zipCode\": \"\",\r\n    \"accountId\": \"622116\",\r\n    \"mbrFirstName\": \"CHALMJBYSDUS\",\r\n    \"mbrLastName\": \"AOFWMNJVMICO\",\r\n    \"mbrDob\": \"1973-04-22\",\r\n    \"lobCode\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://itxain2.innovate.lan/CIGNAPHM_SCO",
+							"protocol": "https",
+							"host": [
+								"itxain2",
+								"innovate",
+								"lan"
+							],
+							"path": [
+								"CIGNAPHM_SCO"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test Copy",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": " application/json ",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": " gzip,deflate",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"serviceReferenceId\": \"\",\r\n   \"clientName\":\"Evicore\",\r\n    \"customerAmi\": \"10089929001\",\r\n    \"hcpcCode\": \"C9399\",\r\n    \"programIndicator\": \"pathwell\",\r\n    \"residenceStateCode\": \"VA\",\r\n    \"providerNPI\": \"1013029180\",\r\n    \"providerTIN\": \"202178916\",\r\n    \"startServiceDate\": \"2022-07-29\",  \r\n    \"zipCode\": \"20103\", \r\n    \"accountId\": \"622116\",\r\n    \"mbrFirstName\": \"RIOLNZEE\",\r\n    \"mbrLastName\": \"PEICHDSENAUN\",\r\n    \"mbrDob\": \"1973-01-04\",\r\n    \"lobCode\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://itxain2.innovate.lan/CIGNAPHM_SCO",
+							"protocol": "https",
+							"host": [
+								"itxain2",
+								"innovate",
+								"lan"
+							],
+							"path": [
+								"CIGNAPHM_SCO"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Test",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "B2BIOEDIRT",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "Z#s@8f8eEFnJn8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": " application/json ",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Encoding",
+						"value": " gzip,deflate",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"programIndicator\": \"sco\",\r\n    \"providerNPI\": \"\",\r\n    \"customerAmi\": \"10092084902\",\r\n    \"providerTIN\": \"461629800\",\r\n    \"hcpcCode\": \"Q5115\",\r\n    \"fundArrangementType\": \"1\",\r\n    \"erisaIndicator\": \"Y\",\r\n    \"residenceStateCode\": \"CT\",\r\n    \"situsStateCode\": \"CT\",\r\n    \"clientName\": \"evicore\",\r\n    \"zipCode\": \"06001\",\r\n    \"accountId\": \"00624253\",\r\n    \"startServiceDate\": \"2023-05-08\",\r\n    \"groupId\": \"\",\r\n    \"ndcCode\": \"\",\r\n    \"lobCode\": \"GWFC\",\r\n    \"mbrFirstName\": \"RHISHTLYRYBC\",\r\n    \"mbrLastName\": \"TSUAHXNAKI\",\r\n    \"mbrDob\": \"1998-03-09\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://itxain2.innovate.lan/CIGNAPHM_SCO",
+					"protocol": "https",
+					"host": [
+						"itxain2",
+						"innovate",
+						"lan"
+					],
+					"path": [
+						"CIGNAPHM_SCO"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test_SCO",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "Z#s@8f8eEFnJn8",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "B2BIOEDIRT",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": " application/json ",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Encoding",
+						"value": " gzip,deflate",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"serviceReferenceId\": \"\",\r\n    \"clientName\": \"Evicore\",\r\n    \"customerAmi\": \"10092084900\",\r\n    \"hcpcCode\": \"J2506\",\r\n    \"ndcCode\": \"\",\r\n    \"programIndicator\": \"scoplus\",\r\n    \"fundArrangementType\": \"1\",\r\n    \"erisaIndicator\": \"Y\",\r\n    \"residenceStateCode\": \"CT\",\r\n    \"situsStateCode\": \"CT\",\r\n    \"providerNPI\": \"\",\r\n    \"providerTIN\": \"860860427\",\r\n    \"startServiceDate\": \"2023-04-27\",\r\n    \"zipCode\": \"6001\",\r\n    \"accountId\": \"624253\",\r\n    \"mbrFirstName\": \"QUMQIDONNITE\",\r\n    \"mbrLastName\": \"TSUAHXNAKI\",\r\n    \"mbrDob\": \"1974-01-04\",\r\n    \"lobCode\": \"GWFC\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://itxain2.innovate.lan/CIGNAPHM_SCO",
+					"protocol": "https",
+					"host": [
+						"itxain2",
+						"innovate",
+						"lan"
+					],
+					"path": [
+						"CIGNAPHM_SCO"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test_SCOPlus",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "Z#s@8f8eEFnJn8",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "B2BIOEDIRT",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": " application/json ",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Encoding",
+						"value": " gzip,deflate",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"serviceReferenceId\": \"\",\r\n\"clientName\": \"evicore\",\r\n\"customerAmi\": \"91310479900\",\r\n\"hcpcCode\": \"J2506\",\r\n\"fundArrangementType\": \"1\",\r\n\"erisaIndicator\": \"Y\",\r\n\"programIndicator\": \"scoplus\",\r\n\"residenceStateCode\": \"aa\",\r\n\"zipCode\": \"23389\",\r\n\"situsStateCode\": \"AK\",\r\n\"startServiceDate\":\"2023-03-31\",\r\n\"providerTIN\": \"976846432\",\r\n\"ndcCode\": \"50242006101\",\r\n\"accountId\":\"123\",\r\n\"mbrFirstName\":\"JACK\",\r\n\"mbrLastName\":\"WILL\",\r\n\"mbrDob\":\"1988-11-01\",\r\n\"lobCode\": \"GWFC\",\r\n\"groupId\": \"123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://itxain2.innovate.lan/CIGNAPHM_SCO",
+					"protocol": "https",
+					"host": [
+						"itxain2",
+						"innovate",
+						"lan"
+					],
+					"path": [
+						"CIGNAPHM_SCO"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

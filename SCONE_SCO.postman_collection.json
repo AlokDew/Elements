@@ -1,0 +1,410 @@
+{
+	"info": {
+		"_postman_id": "13e0b2b7-0fce-40e1-8cd4-b46575f2c441",
+		"name": "SCONE_SCO",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "SCO_Failure",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"console.log(\"Scenario Title: \"+pm.iterationData.get(\"scenarioTitle\"));\r",
+							"pm.test(\"Test Case Id: \"+pm.iterationData.get(\"TestCaseId\"), function (){ \r",
+							"\r",
+							"    console.log (\"Verifying Status Code\");\r",
+							"    pm.response.to.have.status(200);\r",
+							"    console.log (\"Status 200 Code Validated\");\r",
+							"    pm.response.to.be.ok;\r",
+							"    pm.response.to.be.withBody;\r",
+							"\r",
+							"    var jsondata = pm.response.json();\r",
+							"    console.log (\"Verifying Error Status Code\");\r",
+							"    pm.expect(jsondata.metadata.outcome.status).to.eql(400);\r",
+							"    console.log(\"Expected Result: 400\" +\" Was found: \"+ jsondata.metadata.outcome.status);\r",
+							"    console.log (\"Status 400 Error Code Validated Successfully\");\r",
+							"\r",
+							"    console.log (\"Verifying Validation Message\");\r",
+							"    pm.expect(jsondata.metadata.outcome.message).to.eql(\"Request failed validation.\");\r",
+							"    console.log(\"Expected Result: Request failed validation.\" +\" Was found: \"+ jsondata.metadata.outcome.message);\r",
+							"    console.log (\"Validation Message Validated Successfully\");\r",
+							"\r",
+							"    console.log (\"Verifying code\");\r",
+							"    pm.expect(jsondata.metadata.outcome.code).to.eql(101001);\r",
+							"    console.log(\"Expected Result: 101001\" +\" Was found: \"+ jsondata.metadata.outcome.code);\r",
+							"    console.log (\"Code 101001 Validated Successfully\");\r",
+							"\r",
+							"    console.log (\"Verifying code\");\r",
+							"    pm.expect(jsondata.metadata.outcome.additionalDetails[0].code).to.eql(900002);\r",
+							"    console.log(\"Expected Result: 900002\" +\" Was found: \"+ jsondata.metadata.outcome.additionalDetails[0].code);\r",
+							"    console.log (\"Code 900002 Validated Successfully\");\r",
+							"\r",
+							"    console.log (\"Verifying Additional Message\");\r",
+							"    pm.expect(jsondata.metadata.outcome.additionalDetails[0].message).to.contains(pm.iterationData.get(\"additionalDetails\"));\r",
+							"    console.log(\"Expected Result: \"+pm.iterationData.get(\"additionalDetails\")+\" Was found: \"+ jsondata.metadata.outcome.additionalDetails[0].message);\r",
+							"    console.log (\"Additional Message Validated Successfully\");\r",
+							"\r",
+							"    console.log (\"Verifying severity\");\r",
+							"    pm.expect(jsondata.metadata.outcome.additionalDetails[0].severity).to.eql(\"ERROR\");\r",
+							"    console.log(\"Expected Result: ERROR \"+\" Was found: \"+ jsondata.metadata.outcome.additionalDetails[0].severity);\r",
+							"    console.log (\"Severity Validated Successfully\");\r",
+							"    \r",
+							"    \r",
+							"    \r",
+							"    \r",
+							"    //pm.expect(jsondata.metadata.outcome.additionalDetails[0].severity).to.eql(\"ERROR\"));\r",
+							"    \r",
+							"    });\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "Z#s@8f8eEFnJn8",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "B2BIOEDIRT",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": " application/json ",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Encoding",
+						"value": " gzip,deflate",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"serviceReferenceId\": \"\",\r\n    \"clientName\": \"{{clientName}}\",\r\n    \"customerAmi\": \"{{memberID}}\",\r\n    \"hcpcCode\": \"{{hcpcCode}}\",\r\n    \"programIndicator\": \"{{programIndicator}}\",\r\n    \"fundArrangementType\": \"{{fundArrangementType}}\",\r\n    \"erisaIndicator\": \"{{erisaIndicator}}\",\r\n    \"residenceStateCode\": \"{{resStateCode}}\",\r\n    \"situsStateCode\": \"{{situsStateCode}}\",\r\n    \"providerNPI\": \"{{siteNPI}}\",\r\n    \"providerTIN\": \"{{siteTIN}}\",\r\n    \"startServiceDate\": \"{{serviceDate}}\",\r\n    \"zipCode\": \"{{membResidenceZip}}\",\r\n    \"accountId\": \"{{clientAccountID}}\",\r\n    \"mbrFirstName\": \"{{memberFirstName}}\",\r\n    \"mbrLastName\": \"{{memberLastName}}\",\r\n    \"mbrDob\": \"{{memberDOB}}\",\r\n    \"lobCode\": \"{{lobCode}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://itxain2.innovate.lan/CIGNAPHM_SCO",
+					"protocol": "https",
+					"host": [
+						"itxain2",
+						"innovate",
+						"lan"
+					],
+					"path": [
+						"CIGNAPHM_SCO"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SCO_Success",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"console.log(\"Scenario Title: \"+pm.iterationData.get(\"scenarioTitle\"));\r",
+							"\r",
+							"pm.test(\"Test Case ID: \"+pm.iterationData.get(\"TestCaseId\")+\" Validating CandidecyCheckCode\", function () {\r",
+							"    console.log(\"Verifying Status Code\");\r",
+							"    pm.response.to.have.status(200);\r",
+							"    console.log(\"Status code is Validated\");\r",
+							"    \r",
+							"    var jsonData = pm.response.json();\r",
+							"\r",
+							"    console.log(\"Verifying candidacyCheckCode\");\r",
+							"    console.log(\"Expected Result: \"+pm.iterationData.get(\"candidacyCheckCode\")+\" Was found: \"+jsonData.payload.candidacyCheckCode);\r",
+							"    pm.expect(jsonData.payload.candidacyCheckCode).to.eql(pm.iterationData.get(\"candidacyCheckCode\"));\r",
+							"    if(pm.iterationData.get(\"situsStateCode\")==\"\")\r",
+							"    {\r",
+							"        console.log(\"Verifying Additional details for blank situsStateCode\");\r",
+							"        console.log(\"Expected Result: \"+pm.iterationData.get(\"additionalDetails\")+\" Was found: \"+jsonData.payload.additionalDetails);\r",
+							"    pm.expect(jsonData.payload.additionalDetails).to.eql(pm.iterationData.get(\"additionalDetails\"));\r",
+							"\r",
+							"    }\r",
+							"\r",
+							"    if(jsonData.payload.candidacyCheckCode == \"N\")\r",
+							"    {\r",
+							"        console.log(\"Verifying candidacyCheckReasonCode,candidacyCheckReasonDescription\");\r",
+							"        \r",
+							"        var reasonCodeCount= jsonData.payload.reasonCodes.length;\r",
+							"        for (var i = 0;i<reasonCodeCount;i++)\r",
+							"        {\r",
+							"            var reasonCodes_name=\"candidacyCheckReasonCode\"+(i+1).toString();\r",
+							"            var reasonDesc_name= \"candidacyCheckReasonDescription\"+(i+1).toString();\r",
+							"            console.log(\"Expected Result: \"+pm.iterationData.get(reasonCodes_name)+\" Was found: \"+jsonData.payload.reasonCodes[i].candidacyCheckReasonCode);\r",
+							"            pm.expect(parseInt(jsonData.payload.reasonCodes[i].candidacyCheckReasonCode)).to.eql(pm.iterationData.get(reasonCodes_name));\r",
+							"\r",
+							"            console.log(\"Expected Result: \"+pm.iterationData.get(reasonDesc_name)+\" Was found: \"+jsonData.payload.reasonCodes[i].candidacyCheckReasonDescription);\r",
+							"            pm.expect(jsonData.payload.reasonCodes[i].candidacyCheckReasonDescription).to.eql(pm.iterationData.get(reasonDesc_name));\r",
+							"        }\r",
+							"    }\r",
+							"\r",
+							"    console.log(\"Verifying memberID\");\r",
+							"    console.log(\"Expected Result: \"+pm.iterationData.get(\"memberID\")+\" Was found: \"+jsonData.payload.customerAmi);\r",
+							"    var flag= Number.isInteger(pm.iterationData.get(\"memberID\"));\r",
+							"    console.log(\"flag is\"+flag)\r",
+							"    if(flag)\r",
+							"    {\r",
+							"        pm.expect(jsonData.payload.customerAmi).to.eql((pm.iterationData.get(\"memberID\")).toString());\r",
+							"    }\r",
+							"    else\r",
+							"    {\r",
+							"    pm.expect((jsonData.payload.customerAmi)).to.eql(pm.iterationData.get(\"memberID\"));\r",
+							"    }\r",
+							"\r",
+							"    console.log(\"Verifying Drug Code\");\r",
+							"    console.log(\"Expected Result: \"+pm.iterationData.get(\"hcpcCode\")+\" Was found: \"+jsonData.payload.hcpcCode);\r",
+							"    pm.expect(jsonData.payload.hcpcCode).to.eql(pm.iterationData.get(\"hcpcCode\"));\r",
+							"    \r",
+							"    console.log(\"Verifying residenceStateCode\");\r",
+							"    console.log(\"Expected Result: \"+pm.iterationData.get(\"resStateCode\")+\" Was found: \"+jsonData.payload.residenceStateCode);\r",
+							"    pm.expect(jsonData.payload.residenceStateCode).to.eql(pm.iterationData.get(\"resStateCode\"));\r",
+							"\r",
+							"    console.log(\"Verifying site NPI\");\r",
+							"    console.log(\"Expected Result: \"+pm.iterationData.get(\"siteNPI\")+\" Was found: \"+jsonData.payload.providerNPI);\r",
+							"   // pm.expect(parseInt(jsonData.payload.providerNPI)).to.eql(pm.iterationData.get(\"siteNPI\"));\r",
+							"\r",
+							"    console.log(\"Verifying site TIN\");\r",
+							"    console.log(\"Expected Result: \"+pm.iterationData.get(\"siteTIN\")+\" Was found: \"+jsonData.payload.providerTIN);\r",
+							"    pm.expect(parseInt(jsonData.payload.providerTIN)).to.eql(pm.iterationData.get(\"siteTIN\"));\r",
+							"\r",
+							"    console.log(\"Verifying service Date\");\r",
+							"    console.log(\"Expected Result: \"+pm.iterationData.get(\"serviceDate\")+\" Was found: \"+jsonData.payload.startServiceDate);\r",
+							"    pm.expect(jsonData.payload.startServiceDate).to.eql(pm.iterationData.get(\"serviceDate\"));\r",
+							"\r",
+							"    //console.log(\"Verifying member zip\");\r",
+							"    //console.log(\"Expected Result: \"+pm.iterationData.get(\"membResidenceZip\")+\" Was found: \"+jsonData.payload.zipCode);\r",
+							"    //pm.expect(jsonData.payload.zipCode).to.eql(pm.iterationData.get(\"membResidenceZip\"));\r",
+							"\r",
+							"    console.log(\"Verifying accountID / Group ID\");\r",
+							"    console.log(\"Expected Result: \"+pm.iterationData.get(\"clientAccountID\")+\" Was found: \"+jsonData.payload.zipCode);\r",
+							"    pm.expect(parseInt(jsonData.payload.accountId)).to.eql(pm.iterationData.get(\"clientAccountID\"));\r",
+							"\r",
+							"    console.log(\"Verifying mbrFirstName\");\r",
+							"    console.log(\"Expected Result: \"+pm.iterationData.get(\"memberFirstName\")+\" Was found: \"+jsonData.payload.mbrFirstName);\r",
+							"    pm.expect(jsonData.payload.mbrFirstName).to.eql(pm.iterationData.get(\"memberFirstName\"));\r",
+							"\r",
+							"    console.log(\"Verifying mbrLastName\");\r",
+							"    console.log(\"Expected Result: \"+pm.iterationData.get(\"memberLastName\")+\" Was found: \"+jsonData.payload.mbrLastName);\r",
+							"    pm.expect(jsonData.payload.mbrLastName).to.eql(pm.iterationData.get(\"memberLastName\"));\r",
+							"\r",
+							"    console.log(\"Verifying mbr DOB\");\r",
+							"    console.log(\"Expected Result: \"+pm.iterationData.get(\"memberDOB\")+\" Was found: \"+jsonData.payload.mbrDob);\r",
+							"    pm.expect(jsonData.payload.mbrDob).to.eql(pm.iterationData.get(\"memberDOB\"));\r",
+							"\r",
+							"    console.log(\"Verifying programIndicator\");\r",
+							"    console.log(\"Expected Result(Excel): \"+pm.iterationData.get(\"programIndicator\")+\" Was found(Response): \"+jsonData.payload.programIndicator);\r",
+							"    pm.expect(jsonData.payload.programIndicator).to.eql(pm.iterationData.get(\"programIndicator\"));\r",
+							"   \r",
+							"console.log(\"Verifying fundArrangementType\");\r",
+							"console.log(\"Expected Result(Excel): \"+pm.iterationData.get(\"fundArrangementType\")+\" Was found(Response): \"+jsonData.payload.fundArrangementType);\r",
+							"pm.expect(parseInt(jsonData.payload.fundArrangementType)).to.eql(pm.iterationData.get(\"fundArrangementType\"));\r",
+							"\r",
+							"console.log(\"Verifying erisaIndicator\");\r",
+							"console.log(\"Expected Result(Excel): \"+pm.iterationData.get(\"erisaIndicator\")+\" Was found(Response): \"+jsonData.payload.erisaIndicator);\r",
+							"pm.expect(jsonData.payload.erisaIndicator).to.eql(pm.iterationData.get(\"erisaIndicator\"));\r",
+							"\r",
+							"// console.log(\"Verifying situsStateCode\");\r",
+							"// console.log(\"Expected Result(Excel): \"+pm.iterationData.get(\"situsStateCode\")+\" Was found(Response): \"+jsonData.payload.situsStateCode);\r",
+							"// pm.expect(jsonData.payload.situsStateCode).to.eql(pm.iterationData.get(\"situsStateCode\"));\r",
+							"\r",
+							"console.log(\"Verifying lobCode\");\r",
+							"console.log(\"Expected Result(Excel): \"+pm.iterationData.get(\"lobCode\")+\" Was found(Response): \"+jsonData.payload.lobCode);\r",
+							"pm.expect(jsonData.payload.lobCode).to.eql(pm.iterationData.get(\"lobCode\"));\r",
+							"\r",
+							"    console.log(\"Test Completed....!\")\r",
+							"    \r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"console.log(\"executing pre request script...................\");\r",
+							"console.log(\"zipcode from excel: \"+pm.iterationData.get(\"membResidenceZip\"));\r",
+							"var membResidenceZip=pm.iterationData.get(\"membResidenceZip\");\r",
+							"//console.log(\"zipcode1 value\"+membResidenceZip.toString().length);\r",
+							"if(membResidenceZip.toString().length<5)\r",
+							"{\r",
+							"var zipCode1 = \"0\"+membResidenceZip.toString();\r",
+							"}\r",
+							"else\r",
+							"{\r",
+							"var zipCode1 = membResidenceZip.toString();\r",
+							"}\r",
+							"//console.log(\"zipcode1 value\"+zipCode1);\r",
+							"pm.environment.set(\"zipCode\",zipCode1);\r",
+							"//console.log(\"Account ID from excel: \"+pm.iterationData.get(\"clientAccountID\"));\r",
+							"var accountId1 = \"00\"+pm.iterationData.get(\"clientAccountID\");\r",
+							"pm.environment.set(\"accountId\",accountId1);\r",
+							"console.log(\"executing pre request script: Done....................\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "Z#s@8f8eEFnJn8",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "B2BIOEDIRT",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": " application/json ",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Encoding",
+						"value": " gzip,deflate",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"serviceReferenceId\": \"\",\r\n    \"clientName\": \"{{clientName}}\",\r\n    \"customerAmi\": \"{{memberID}}\",\r\n    \"hcpcCode\": \"{{hcpcCode}}\",\r\n    \"ndcCode\": \"{{ndcCode}}\",\r\n    \"programIndicator\": \"{{programIndicator}}\",\r\n    \"fundArrangementType\": \"{{fundArrangementType}}\",\r\n    \"erisaIndicator\": \"{{erisaIndicator}}\",\r\n    \"residenceStateCode\": \"{{resStateCode}}\",\r\n    \"situsStateCode\": \"{{situsStateCode}}\",\r\n    \"providerNPI\": \"{{siteNPI}}\",\r\n    \"providerTIN\": \"{{siteTIN}}\",\r\n    \"startServiceDate\": \"{{serviceDate}}\",\r\n    \"zipCode\": \"{{zipCode}}\",\r\n    \"accountId\": \"{{accountId}}\",\r\n    \"mbrFirstName\": \"{{memberFirstName}}\",\r\n    \"mbrLastName\": \"{{memberLastName}}\",\r\n    \"mbrDob\": \"{{memberDOB}}\",\r\n    \"lobCode\": \"{{lobCode}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://itxain2.innovate.lan/CIGNAPHM_SCO",
+					"protocol": "https",
+					"host": [
+						"itxain2",
+						"innovate",
+						"lan"
+					],
+					"path": [
+						"CIGNAPHM_SCO"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test_SCO Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"console.log(\"Scenario Title:CandidecyCheckCode\");\r",
+							"\r",
+							"pm.test(\" Validating CandidecyCheckCode\", function () {\r",
+							"    console.log(\"Verifying Status Code\");\r",
+							"    pm.response.to.have.status(200);\r",
+							"    console.log(\"Status code is Validated\");\r",
+							"    \r",
+							"    var jsonData = pm.response.json();\r",
+							"\r",
+							"    console.log(\"Verifying candidacyCheckCode\");\r",
+							"    //console.log(\"Expected Result: \"+pm.iterationData.get(\"candidacyCheckCode\")+\" Was found: \"+jsonData.payload.candidacyCheckCode);\r",
+							"    //pm.expect(jsonData.payload.candidacyCheckCode).to.eql(\"Y\");\r",
+							"    pm.expect(jsonData.payload.candidacyCheckCode).to.eql(\"N\");\r",
+							"\r",
+							"    pm.expect(parseInt(jsonData.payload.reasonCodes[0].candidacyCheckReasonCode)).to.eql(50);\r",
+							"\r",
+							"   \r",
+							"    console.log(\"Test Completed....!\")\r",
+							"    \r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "Z#s@8f8eEFnJn8",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "B2BIOEDIRT",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": " application/json ",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Encoding",
+						"value": " gzip,deflate",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"programIndicator\": \"sco\",\r\n    \"providerNPI\": \"\",\r\n    \"customerAmi\": \"10092184000\",\r\n    \"providerTIN\": \"201805702\",\r\n    \"hcpcCode\": \"{{hcpcCode}}\",\r\n    \"fundArrangementType\": \"1\",\r\n    \"erisaIndicator\": \"Y\",\r\n    \"residenceStateCode\": \"CT\",\r\n    \"situsStateCode\": \"CT\",\r\n    \"clientName\": \"evicore\",\r\n    \"zipCode\": \"46013\",\r\n    \"accountId\": \"00624262\",\r\n    \"startServiceDate\": \"2023-05-11\",\r\n    \"groupId\": \"\",\r\n    \"ndcCode\": \"\",\r\n    \"lobCode\": \"GWFC\",\r\n    \"mbrFirstName\": \"Queayshfpjoa\",\r\n    \"mbrLastName\": \"Dsdjrpkmtsn\",\r\n    \"mbrDob\": \"1971-04-18\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://itxain2.innovate.lan/CIGNAPHM_SCO",
+					"protocol": "https",
+					"host": [
+						"itxain2",
+						"innovate",
+						"lan"
+					],
+					"path": [
+						"CIGNAPHM_SCO"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
